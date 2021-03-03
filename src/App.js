@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import Header from './components/Header';
+import JobCard from './components/JobCard';
+import listingsData from './data/data.json'
+
 
 function App() {
+  const [listings, setListings] = useState([])
+  useEffect(() => {
+    setListings(listingsData)
+  }, [])
+  
+  const filterListings = (filter_by = '') => setListings(listings.filter(listing =>  [...listing.languages, ...listing.tools].includes(filter_by)))
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Header />
+     <div className="grid p-16 justify-center items-center text-gray-900">
+       { listings.map(listing => <JobCard listing={listing} key={listing.id} filtering={filterListings} />) }
+     </div>
     </div>
   );
 }
