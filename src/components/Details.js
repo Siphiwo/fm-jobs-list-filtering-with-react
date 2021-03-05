@@ -27,7 +27,7 @@ function Details({
         <div className="flex-1 px-4 py-2">
             <div className="flex flex-grow">
                 <p className="mr-2 flex justify-center items-center">{company}</p>
-                {recent ? <p className="tags new-tag rounded-xl px-2 p-1">new</p> : null}
+                {recent ? <p className="tags new-tag rounded-xl px-2 p-1 mr-1">new</p> : null}
                 {featured ? <p className="tags new-tag rounded-xl px-2 p-1">featured</p> : null}
             </div>
             <p className="main-heading my-2">{position}</p>
