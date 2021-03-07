@@ -16,7 +16,7 @@ function Details({
         filter_f(skill)
     }
 
-    const Skills = skill => (<div class="tag rounded-md p-1 px-2 m-2">
+    const Skills = ({skill}) => (<div className="tag rounded-md p-1 px-2 m-2">
         <button onClick={() => handleClick(skill)}>
             {skill}
         </button>
@@ -39,7 +39,7 @@ function Details({
         </div>
         <div className="tags flex flex-1 justify-center items-end">
             {
-                [...languages, ...tools].map( skill => Skills(skill))
+                [...languages, ...tools].map( skill => <Skills skill={skill}key={skill} />)
             }
         </div>
         </>
